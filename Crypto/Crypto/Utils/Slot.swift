@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -12,14 +12,14 @@ import Foundation
 public class Slot {
 
     public static func time() -> UInt32 {
-        let epoch = self.rfc3339().date(from: ArkNetwork.shared.get().epoch())?.timeIntervalSince1970
+        let epoch = self.rfc3339().date(from: PhantomNetwork.shared.get().epoch())?.timeIntervalSince1970
         let now = NSDate().timeIntervalSince1970
 
         return UInt32(now - epoch!)
     }
 
     public static func epoch() -> Int {
-        return Int((self.rfc3339().date(from: ArkNetwork.shared.get().epoch())?.timeIntervalSince1970)!)
+        return Int((self.rfc3339().date(from: PhantomNetwork.shared.get().epoch())?.timeIntervalSince1970)!)
     }
 
     private static func rfc3339() -> DateFormatter {

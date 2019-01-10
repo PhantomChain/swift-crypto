@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 import Foundation
 
-public class ArkSerializer {
+public class PhantomSerializer {
 
-    public static func serialize(transaction: ArkTransaction) -> String {
+    public static func serialize(transaction: PhantomTransaction) -> String {
         var bytes = [UInt8]()
         bytes.append(0xff)
         bytes.append(transaction.version! > 0 ? transaction.version! : 0x01)
-        bytes.append(transaction.network! > 0 ? transaction.network! : ArkNetwork.shared.get().version())
+        bytes.append(transaction.network! > 0 ? transaction.network! : PhantomNetwork.shared.get().version())
         bytes.append(UInt8.init(transaction.type!.rawValue))
         var transactionBytes = pack(transaction.timestamp)
         transactionBytes.removeLast() // Timestamp is 32bits (5 bytes), but only 4 bytes serialized
@@ -34,7 +34,7 @@ public class ArkSerializer {
         return bytes.map { String(format: "%02x", $0) }.joined()
     }
 
-    private static func serializeVendorField(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeVendorField(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         if let vendorField = transaction.vendorField {
             let length = vendorField.count
             bytes.append(contentsOf: pack(UInt8(length)))
@@ -48,7 +48,7 @@ public class ArkSerializer {
         }
     }
 
-    private static func serializeType(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeType(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         switch transaction.type! {
         case .delegateRegistration:
             serializeDelegateRegistration(transaction: transaction, &bytes)
@@ -71,7 +71,7 @@ public class ArkSerializer {
         }
     }
 
-    private static func serializeSignatures(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeSignatures(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         if let signature = transaction.signature {
             bytes.append(contentsOf: [UInt8](Data.init(hex: signature)!))
         }
@@ -92,7 +92,7 @@ public class ArkSerializer {
 
     // MARK: - Type serializers
 
-    private static func serializeTransfer(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeTransfer(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         var transactionBytes = pack(transaction.amount)
         transactionBytes.removeLast()
         bytes.append(contentsOf: transactionBytes)
@@ -105,19 +105,19 @@ public class ArkSerializer {
         bytes.append(contentsOf: recipientId!)
     }
 
-    private static func serializeDelegateRegistration(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeDelegateRegistration(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         let delegate = transaction.asset!["delegate"] as! [String: String]
         let username = delegate["username"]!
         bytes.append(contentsOf: pack(UInt8(username.count)))
         bytes.append(contentsOf: [UInt8](username.data(using: .utf8)!))
     }
 
-    private static func serializeSecondSignatureRegistration(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeSecondSignatureRegistration(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         let signature = transaction.asset!["signature"] as! [String: String]
         bytes.append(contentsOf: [UInt8](Data.init(hex: signature["publicKey"]!)!))
     }
 
-    private static func serializeVote(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeVote(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         let votes = transaction.asset!["votes"] as! [String]
 
         var voteBytes = [String]()
@@ -132,7 +132,7 @@ public class ArkSerializer {
         bytes.append(contentsOf: [UInt8](Data.init(hex: voteBytes.joined())!))
     }
 
-    private static func serializeMultiSignatureRegistration(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeMultiSignatureRegistration(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         let multisigAsset = transaction.asset!["multisignature"] as! [String: Any]
         let keysgroup = multisigAsset["keysgroup"] as! [String]
 
@@ -154,22 +154,22 @@ public class ArkSerializer {
         bytes.append(contentsOf: [UInt8](Data.init(hex: keyBytes.joined())!))
     }
 
-    private static func serializeIpfs(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeIpfs(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         let ipfs = transaction.asset!["ipfs"] as! [String: String]
         let dag = ipfs["dag"]!
         bytes.append(contentsOf: pack(UInt8(dag.count)))
         bytes.append(contentsOf: [UInt8](Data.init(hex: dag)!))
     }
 
-    private static func serializeMultiPayment(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeMultiPayment(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         // TODO
     }
 
-    private static func serializeTimelockTransfer(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeTimelockTransfer(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         // TODO
     }
 
-    private static func serializeDelegateResignation(transaction: ArkTransaction, _ bytes: inout [UInt8]) {
+    private static func serializeDelegateResignation(transaction: PhantomTransaction, _ bytes: inout [UInt8]) {
         // TODO
     }
 }

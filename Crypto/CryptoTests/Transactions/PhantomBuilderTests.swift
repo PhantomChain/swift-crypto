@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -12,7 +12,7 @@
 import XCTest
 @testable import Crypto
 
-class ArkBuilderTests: XCTestCase {
+class PhantomBuilderTests: XCTestCase {
 
     let passphrase = "this is a top secret passphrase"
     let secondPassphrase = "this is a top secret passphrase too"
@@ -22,7 +22,7 @@ class ArkBuilderTests: XCTestCase {
     let vendorField = "this is a tx from Swift"
 
     func testTransfer() {
-        let transaction = ArkBuilder.buildTransfer(passphrase, secondPassphrase: nil, to: recipientAddress, amount: 100000000, vendorField: vendorField)
+        let transaction = PhantomBuilder.buildTransfer(passphrase, secondPassphrase: nil, to: recipientAddress, amount: 100000000, vendorField: vendorField)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertEqual(transaction.amount, 100000000)
@@ -33,7 +33,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testTransferSecondSignature() {
-        let transaction = ArkBuilder.buildTransfer(passphrase, secondPassphrase: secondPassphrase, to: recipientAddress, amount: 100000000, vendorField: vendorField)
+        let transaction = PhantomBuilder.buildTransfer(passphrase, secondPassphrase: secondPassphrase, to: recipientAddress, amount: 100000000, vendorField: vendorField)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertEqual(transaction.amount, 100000000)
@@ -44,7 +44,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testDelegateRegistration() {
-        let transaction = ArkBuilder.buildDelegateRegistration(passphrase, secondPassphrase: nil, username: "genesis")
+        let transaction = PhantomBuilder.buildDelegateRegistration(passphrase, secondPassphrase: nil, username: "genesis")
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)
@@ -55,7 +55,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testDelegateRegistrationSecondSignature() {
-        let transaction = ArkBuilder.buildDelegateRegistration(passphrase, secondPassphrase: secondPassphrase, username: "genesis")
+        let transaction = PhantomBuilder.buildDelegateRegistration(passphrase, secondPassphrase: secondPassphrase, username: "genesis")
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)
@@ -66,7 +66,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testSecondSignature() {
-        let transaction = ArkBuilder.buildSecondSignature(passphrase, secondPassphrase: secondPassphrase)
+        let transaction = PhantomBuilder.buildSecondSignature(passphrase, secondPassphrase: secondPassphrase)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)
@@ -77,7 +77,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testVote() {
-        let transaction = ArkBuilder.buildVote(passphrase, secondPassphrase: nil, vote: delegatePublicKey)
+        let transaction = PhantomBuilder.buildVote(passphrase, secondPassphrase: nil, vote: delegatePublicKey)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)
@@ -88,7 +88,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testUnvote() {
-        let transaction = ArkBuilder.buildUnvote(passphrase, secondPassphrase: nil, vote: delegatePublicKey)
+        let transaction = PhantomBuilder.buildUnvote(passphrase, secondPassphrase: nil, vote: delegatePublicKey)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)
@@ -99,7 +99,7 @@ class ArkBuilderTests: XCTestCase {
     }
 
     func testVoteSecondSignature() {
-        let transaction = ArkBuilder.buildVote(passphrase, secondPassphrase: secondPassphrase, vote: delegatePublicKey)
+        let transaction = PhantomBuilder.buildVote(passphrase, secondPassphrase: secondPassphrase, vote: delegatePublicKey)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)
@@ -111,7 +111,7 @@ class ArkBuilderTests: XCTestCase {
 
     func testUnvoteSecondSignature() {
 
-        let transaction = ArkBuilder.buildUnvote(passphrase, secondPassphrase: secondPassphrase, vote: delegatePublicKey)
+        let transaction = PhantomBuilder.buildUnvote(passphrase, secondPassphrase: secondPassphrase, vote: delegatePublicKey)
 
         XCTAssertNotNil(transaction.fee)
         XCTAssertNotNil(transaction.asset)

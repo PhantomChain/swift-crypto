@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -9,7 +9,7 @@
 
 import Foundation
 
-public class ArkBuilder {
+public class PhantomBuilder {
 
     /// Builds a transaction for a transfer
     ///
@@ -19,8 +19,8 @@ public class ArkBuilder {
     ///   - recipient: the recipient of the transfer
     ///   - amount: the amount of the transfer
     ///   - vendorField: an optional message included in the transfer
-    /// - Returns: a signed ArkTransaction
-    public static func buildTransfer(_ passphrase: String, secondPassphrase: String?, to recipient: String, amount: UInt64, vendorField: String?) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    public static func buildTransfer(_ passphrase: String, secondPassphrase: String?, to recipient: String, amount: UInt64, vendorField: String?) -> PhantomTransaction {
         var transaction = createBaseTransaction(forType: .transfer)
         transaction.recipientId = recipient
         transaction.amount = amount
@@ -34,12 +34,12 @@ public class ArkBuilder {
     /// - Parameters:
     ///   - passphrase: the passphrase of the wallet initiating the request
     ///   - secondPassphrase: the second passphrase that will be registered for the wallet
-    /// - Returns: a signed ArkTransaction
-    public static func buildSecondSignature(_ passphrase: String, secondPassphrase: String) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    public static func buildSecondSignature(_ passphrase: String, secondPassphrase: String) -> PhantomTransaction {
         var transaction = createBaseTransaction(forType: .secondSignatureRegistration)
         transaction.asset = [
             "signature": [
-                "publicKey": ArkPublicKey.from(passphrase: secondPassphrase).raw.hex
+                "publicKey": PhantomPublicKey.from(passphrase: secondPassphrase).raw.hex
             ]
         ]
         return signTransaction(&transaction, passphrase, nil)
@@ -51,13 +51,13 @@ public class ArkBuilder {
     ///   - passphrase: the passphrase of the wallet initiating the request
     ///   - secondPassphrase: the second passphrase of the wallet, if available
     ///   - username: the username of the delegate
-    /// - Returns: a signed ArkTransaction
-    public static func buildDelegateRegistration(_ passphrase: String, secondPassphrase: String?, username: String) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    public static func buildDelegateRegistration(_ passphrase: String, secondPassphrase: String?, username: String) -> PhantomTransaction {
         var transaction = createBaseTransaction(forType: .delegateRegistration)
         transaction.asset = [
             "delegate": [
                 "username": username,
-                "publicKey": ArkPublicKey.from(passphrase: passphrase).raw.hex
+                "publicKey": PhantomPublicKey.from(passphrase: passphrase).raw.hex
             ]
         ]
         return signTransaction(&transaction, passphrase, secondPassphrase)
@@ -69,8 +69,8 @@ public class ArkBuilder {
     ///   - passphrase: the passphrase of the wallet initiating the request
     ///   - secondPassphrase: the second passphrase of the wallet, if available
     ///   - vote: the public key of the delegate that is being voted for
-    /// - Returns: a signed ArkTransaction
-    public static func buildVote(_ passphrase: String, secondPassphrase: String?, vote: String) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    public static func buildVote(_ passphrase: String, secondPassphrase: String?, vote: String) -> PhantomTransaction {
         return createVote(passphrase, secondPassphrase: secondPassphrase, vote: vote, voteType: "+")
     }
 
@@ -80,8 +80,8 @@ public class ArkBuilder {
     ///   - passphrase: the passphrase of the wallet initiating the request
     ///   - secondPassphrase: the second passphrase of the wallet, if available
     ///   - vote: the public key of the delegate that is being unvoted
-    /// - Returns: a signed ArkTransaction
-    public static func buildUnvote(_ passphrase: String, secondPassphrase: String?, vote: String) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    public static func buildUnvote(_ passphrase: String, secondPassphrase: String?, vote: String) -> PhantomTransaction {
         return createVote(passphrase, secondPassphrase: secondPassphrase, vote: vote, voteType: "-")
     }
 
@@ -90,8 +90,8 @@ public class ArkBuilder {
     /// - Parameters:
     ///   - passphrase: the passphrase of the wallet initiating the request
     ///   - secondPassphrase: the second passphrase of the wallet, if available
-    /// - Returns: a signed ArkTransaction
-    public static func buildMultiSignatureRegistration(_ passphrase: String, secondPassphrase: String?, min: UInt8, lifetime: UInt8, keysgroup: [String]) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    public static func buildMultiSignatureRegistration(_ passphrase: String, secondPassphrase: String?, min: UInt8, lifetime: UInt8, keysgroup: [String]) -> PhantomTransaction {
         var transaction = createBaseTransaction(forType: .multiSignatureRegistration)
         let amount = UInt64(keysgroup.count + 1)
         transaction.fee = amount * Fee.shared.get(forType: .multiSignatureRegistration)
@@ -117,13 +117,13 @@ public class ArkBuilder {
     ///   - secondPassphrase: the second passphrase of the wallet, if available
     ///   - vote: the public key of the delegate that is voted for / being unvoted
     ///   - voteType: a String indicating a vote or unvote
-    /// - Returns: a signed ArkTransaction
-    private static func createVote(_ passphrase: String, secondPassphrase: String?, vote: String, voteType: String) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    private static func createVote(_ passphrase: String, secondPassphrase: String?, vote: String, voteType: String) -> PhantomTransaction {
         var transaction = createBaseTransaction(forType: .vote)
         transaction.asset = [
             "votes": ["\(voteType)\(vote)"]
         ]
-        transaction.recipientId = ArkAddress.from(passphrase: passphrase)
+        transaction.recipientId = PhantomAddress.from(passphrase: passphrase)
         return signTransaction(&transaction, passphrase, secondPassphrase)
     }
 
@@ -133,13 +133,13 @@ public class ArkBuilder {
     ///   - transaction: the transaction to sign
     ///   - passphrase: the passphrase to use for signing the transaction
     ///   - secondPassphrase: the second passphrase to use for signing the transaction, if available
-    /// - Returns: a signed ArkTransaction
-    private static func signTransaction(_ transaction: inout ArkTransaction, _ passphrase: String, _ secondPassphrase: String?) -> ArkTransaction {
+    /// - Returns: a signed PhantomTransaction
+    private static func signTransaction(_ transaction: inout PhantomTransaction, _ passphrase: String, _ secondPassphrase: String?) -> PhantomTransaction {
         transaction.timestamp = Slot.time()
-        transaction.sign(ArkPrivateKey.from(passphrase: passphrase))
+        transaction.sign(PhantomPrivateKey.from(passphrase: passphrase))
 
         if let secondPass = secondPassphrase {
-            transaction.secondSign(ArkPrivateKey.from(passphrase: secondPass))
+            transaction.secondSign(PhantomPrivateKey.from(passphrase: secondPass))
         }
 
         transaction.id = transaction.getId()
@@ -149,9 +149,9 @@ public class ArkBuilder {
     /// Helper function to populate default transaction fields
     ///
     /// - Parameter txType: the type of transaction
-    /// - Returns: an unsigned ArkTransaction
-    private static func createBaseTransaction(forType txType: TransactionType) -> ArkTransaction {
-        let transaction = ArkTransaction()
+    /// - Returns: an unsigned PhantomTransaction
+    private static func createBaseTransaction(forType txType: TransactionType) -> PhantomTransaction {
+        let transaction = PhantomTransaction()
         transaction.type = txType
         transaction.fee = Fee.shared.get(forType: txType)
         return transaction

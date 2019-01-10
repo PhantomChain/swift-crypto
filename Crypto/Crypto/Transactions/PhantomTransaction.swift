@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -13,7 +13,7 @@
 import Foundation
 import BitcoinKit
 
-public class ArkTransaction {
+public class PhantomTransaction {
 
     // Header
     var header: UInt8?
@@ -46,7 +46,7 @@ public class ArkTransaction {
     }
 
     // TODO: proper try statement
-    public func sign(_ keys: PrivateKey) -> ArkTransaction {
+    public func sign(_ keys: PrivateKey) -> PhantomTransaction {
         self.senderPublicKey = keys.publicKey().raw.hex
         let transaction = Crypto.sha256(Data(bytes: self.toBytes()))
         self.signature = try! Crypto.sign(transaction, privateKey: keys).hex
@@ -54,7 +54,7 @@ public class ArkTransaction {
     }
 
     // TODO: proper try statement
-    public func secondSign(_ keys: PrivateKey) -> ArkTransaction {
+    public func secondSign(_ keys: PrivateKey) -> PhantomTransaction {
         let transaction = Crypto.sha256(Data(bytes: self.toBytes(skipSignature: false)))
         self.signSignature = try! Crypto.sign(transaction, privateKey: keys).hex
         return self

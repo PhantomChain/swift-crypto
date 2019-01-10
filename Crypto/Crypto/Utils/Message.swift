@@ -1,7 +1,7 @@
 //
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -10,7 +10,7 @@
 import Foundation
 import BitcoinKit
 
-public class ArkMessage: Codable {
+public class PhantomMessage: Codable {
 
     public let publicKey: String
     public let signature: String
@@ -23,11 +23,11 @@ public class ArkMessage: Codable {
     }
 
     // TODO: throw proper error
-    public static func sign(message: String, passphrase: String) -> ArkMessage? {
-        let keys = ArkPrivateKey.from(passphrase: passphrase)
+    public static func sign(message: String, passphrase: String) -> PhantomMessage? {
+        let keys = PhantomPrivateKey.from(passphrase: passphrase)
         let hash = Crypto.sha256(message.data(using: .utf8)!)
         do {
-            return try ArkMessage(publicKey: keys.publicKey().raw.hex,
+            return try PhantomMessage(publicKey: keys.publicKey().raw.hex,
                               signature: Crypto.sign(hash, privateKey: keys).hex,
                               message: message)
         } catch {

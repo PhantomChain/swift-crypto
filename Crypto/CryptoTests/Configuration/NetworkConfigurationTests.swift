@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -13,15 +13,15 @@ import XCTest
 class NetworkTests: XCTestCase {
 
     func testGetNetwork() {
-        let network = ArkNetwork.shared.get()
+        let network = PhantomNetwork.shared.get()
         XCTAssertEqual(network.version(), 30)
     }
 
     func testSetNetwork() {
-        ArkNetwork.shared.set(network: Mainnet())
-        let network = ArkNetwork.shared.get()
+        PhantomNetwork.shared.set(network: Mainnet())
+        let network = PhantomNetwork.shared.get()
         XCTAssertEqual(network.version(), 23)
 
-        ArkNetwork.shared.set(network: Devnet()) // Reset
+        PhantomNetwork.shared.set(network: Devnet()) // Reset
     }
 }

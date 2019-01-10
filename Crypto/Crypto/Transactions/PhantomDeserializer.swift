@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -12,11 +12,11 @@
 
 import Foundation
 
-public class ArkDeserializer {
+public class PhantomDeserializer {
 
-    public static func deserialize(serialized: String) -> ArkTransaction {
+    public static func deserialize(serialized: String) -> PhantomTransaction {
         var bytes = [UInt8](Data.init(hex: serialized)!)
-        var transaction = ArkTransaction()
+        var transaction = PhantomTransaction()
 
         var offset = deserializeHeader(&transaction, &bytes)
         offset = deserializeType(&transaction, type: transaction.type!, &bytes, offset: offset)
@@ -30,7 +30,7 @@ public class ArkDeserializer {
         return transaction
     }
 
-    private static func deserializeHeader(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8]) -> Int {
+    private static func deserializeHeader(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8]) -> Int {
         // Default info
         transaction.header = bytes[0]
         transaction.version = bytes[1]
@@ -56,7 +56,7 @@ public class ArkDeserializer {
         return 50 + Int(vendorFieldLength)
     }
 
-    private static func deserializeType(_ transaction: inout ArkTransaction, type: TransactionType, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeType(_ transaction: inout PhantomTransaction, type: TransactionType, _ bytes: inout [UInt8], offset: Int) -> Int {
         switch type {
         case .delegateRegistration:
             return deserializeDelegateRegistration(&transaction, &bytes, offset: offset)
@@ -79,7 +79,7 @@ public class ArkDeserializer {
         }
     }
 
-    private static func parseSignatures(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) {
+    private static func parseSignatures(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) {
         let signature = bytes[offset..<bytes.count].map{String(format: "%02x", $0)}.joined()
         var multiSigOffset = 0
         if signature.count > 0 {
@@ -129,7 +129,7 @@ public class ArkDeserializer {
     }
 
     // MARK: - Type deserializers
-    private static func deserializeDelegateRegistration(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeDelegateRegistration(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         let usernameLength = Int(bytes[offset])
         transaction.asset = [
             "delegate": [
@@ -140,22 +140,22 @@ public class ArkDeserializer {
         return offset + 1 + usernameLength
     }
 
-    private static func deserializeDelegateResignation(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeDelegateResignation(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         // TODO
         return 0
     }
 
-    private static func deserializeIpfs(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeIpfs(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         // TODO
         return 0
     }
 
-    private static func deserializeMultiPayment(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeMultiPayment(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         // TODO
         return 0
     }
 
-    private static func deserializeMultiSignatureRegistration(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeMultiSignatureRegistration(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         let min = bytes[offset]
         let count = Int(bytes[offset + 1])
         let lifetime = bytes[offset + 2]
@@ -179,7 +179,7 @@ public class ArkDeserializer {
         return offset + 3 + count * 33
     }
 
-    private static func deserializeSecondSignatureRegistration(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeSecondSignatureRegistration(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         transaction.asset = [
             "signature": [
                 "publicKey": bytes[offset..<offset+33].map{String(format: "%02x", $0)}.joined()
@@ -189,12 +189,12 @@ public class ArkDeserializer {
         return offset + 33
     }
 
-    private static func deserializeTimelockTransfer(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeTimelockTransfer(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         // TODO
         return 0
     }
 
-    private static func deserializeTransfer(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeTransfer(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         var idx = offset
         transaction.amount = Data(bytes[idx..<idx+8]).withUnsafeBytes{$0.pointee}
         idx += 8
@@ -206,7 +206,7 @@ public class ArkDeserializer {
         return idx + 21
     }
 
-    private static func deserializeVote(_ transaction: inout ArkTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
+    private static func deserializeVote(_ transaction: inout PhantomTransaction, _ bytes: inout [UInt8], offset: Int) -> Int {
         let voteLength = Int(bytes[offset])
 
         var votes = [String]()
@@ -232,14 +232,14 @@ public class ArkDeserializer {
     }
 
     // MARK: - v1
-    private static func handleVersionOne(_ transaction: inout ArkTransaction) {
+    private static func handleVersionOne(_ transaction: inout PhantomTransaction) {
         if let secondSig = transaction.secondSignature {
             transaction.signSignature = secondSig
         }
 
         if let type = transaction.type {
             if type == .vote {
-                transaction.recipientId = ArkAddress.from(publicKey: transaction.senderPublicKey!, network: transaction.network!)
+                transaction.recipientId = PhantomAddress.from(publicKey: transaction.senderPublicKey!, network: transaction.network!)
             } else if type == .multiSignatureRegistration {
                 var asset = transaction.asset as! [String: [String: Any]]
                 var keysgroup = asset["multisignature"]!["keysgroup"] as! [String]
@@ -261,11 +261,11 @@ public class ArkDeserializer {
 
         if let type = transaction.type {
             if type == .secondSignatureRegistration {
-                let publicKey = ArkPublicKey.from(hex: transaction.senderPublicKey!).description
-                transaction.recipientId = ArkAddress.from(publicKey: publicKey)
+                let publicKey = PhantomPublicKey.from(hex: transaction.senderPublicKey!).description
+                transaction.recipientId = PhantomAddress.from(publicKey: publicKey)
             } else if type == .multiSignatureRegistration {
-                let publicKey = ArkPublicKey.from(hex: transaction.senderPublicKey!).description
-                transaction.recipientId = ArkAddress.from(publicKey: publicKey)
+                let publicKey = PhantomPublicKey.from(hex: transaction.senderPublicKey!).description
+                transaction.recipientId = PhantomAddress.from(publicKey: publicKey)
             }
         }
     }

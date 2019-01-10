@@ -26,17 +26,17 @@
 		D0B1A6FD215561E1001FA4DE /* FeeConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1A6FB215561E1001FA4DE /* FeeConfigurationTests.swift */; };
 		D0B1A6FE215561E1001FA4DE /* NetworkConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1A6FC215561E1001FA4DE /* NetworkConfigurationTests.swift */; };
 		D0B1A70121557399001FA4DE /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1A70021557399001FA4DE /* PrivateKey.swift */; };
-		D0B7298F21D900B8001420AE /* ArkBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7298E21D900B8001420AE /* ArkBuilderTests.swift */; };
-		D0C1637521BAAEFD005F3CD0 /* ArkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637421BAAEFD005F3CD0 /* ArkBuilder.swift */; };
+		D0B7298F21D900B8001420AE /* PhantomBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7298E21D900B8001420AE /* PhantomBuilderTests.swift */; };
+		D0C1637521BAAEFD005F3CD0 /* PhantomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637421BAAEFD005F3CD0 /* PhantomBuilder.swift */; };
 		D0C1637821BACB0F005F3CD0 /* VoteSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637721BACB0F005F3CD0 /* VoteSerializerTests.swift */; };
 		D0C1637A21BAF44B005F3CD0 /* DelegateSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637921BAF44B005F3CD0 /* DelegateSerializerTests.swift */; };
 		D0C1637C21BAF461005F3CD0 /* SecondSignatureSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637B21BAF461005F3CD0 /* SecondSignatureSerializerTests.swift */; };
 		D0C1637E21BAF611005F3CD0 /* TransferSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637D21BAF611005F3CD0 /* TransferSerializerTests.swift */; };
 		D0C1638021BAF622005F3CD0 /* MultiSignatureSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1637F21BAF622005F3CD0 /* MultiSignatureSerializerTests.swift */; };
 		D0C163F621D170AF005F3CD0 /* SlotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C163F521D170AF005F3CD0 /* SlotTests.swift */; };
-		D0D41C672157CB4F000FF047 /* ArkTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41C662157CB4F000FF047 /* ArkTransaction.swift */; };
+		D0D41C672157CB4F000FF047 /* PhantomTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41C662157CB4F000FF047 /* PhantomTransaction.swift */; };
 		D0D41C6921581F20000FF047 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41C6821581F20000FF047 /* HelpersTests.swift */; };
-		D0DC21D1217A50BF00C40276 /* ArkSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC21D0217A50BF00C40276 /* ArkSerializer.swift */; };
+		D0DC21D1217A50BF00C40276 /* PhantomSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC21D0217A50BF00C40276 /* PhantomSerializer.swift */; };
 		D0DC21EF217A84E000C40276 /* identity.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DC21D3217A84DF00C40276 /* identity.json */; };
 		D0DC21F0217A84E000C40276 /* message.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DC21D4217A84DF00C40276 /* message.json */; };
 		D0DC21F1217A84E000C40276 /* del_reg_passphrase.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DC21D7217A84DF00C40276 /* del_reg_passphrase.json */; };
@@ -55,7 +55,7 @@
 		D0DC21FE217A84E000C40276 /* transfer_second-passphrase.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DC21EB217A84DF00C40276 /* transfer_second-passphrase.json */; };
 		D0DC21FF217A84E000C40276 /* vote_passphrase.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DC21ED217A84DF00C40276 /* vote_passphrase.json */; };
 		D0DC2200217A84E000C40276 /* vote_second-passphrase.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DC21EE217A84DF00C40276 /* vote_second-passphrase.json */; };
-		D0DC2202217A866700C40276 /* ArkDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC2201217A866700C40276 /* ArkDeserializer.swift */; };
+		D0DC2202217A866700C40276 /* PhantomDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC2201217A866700C40276 /* PhantomDeserializer.swift */; };
 		D0DC2206217BA97500C40276 /* VoteDeserializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC2205217BA97500C40276 /* VoteDeserializerTests.swift */; };
 		D0DF5F33217E680600E2CC13 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF5F32217E680600E2CC13 /* TestHelpers.swift */; };
 		D0FA889E21557764008F715C /* PrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA889D21557764008F715C /* PrivateKeyTests.swift */; };
@@ -107,17 +107,17 @@
 		D0B1A6FB215561E1001FA4DE /* FeeConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeConfigurationTests.swift; sourceTree = "<group>"; };
 		D0B1A6FC215561E1001FA4DE /* NetworkConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfigurationTests.swift; sourceTree = "<group>"; };
 		D0B1A70021557399001FA4DE /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
-		D0B7298E21D900B8001420AE /* ArkBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkBuilderTests.swift; sourceTree = "<group>"; };
-		D0C1637421BAAEFD005F3CD0 /* ArkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkBuilder.swift; sourceTree = "<group>"; };
+		D0B7298E21D900B8001420AE /* PhantomBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhantomBuilderTests.swift; sourceTree = "<group>"; };
+		D0C1637421BAAEFD005F3CD0 /* PhantomBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhantomBuilder.swift; sourceTree = "<group>"; };
 		D0C1637721BACB0F005F3CD0 /* VoteSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteSerializerTests.swift; sourceTree = "<group>"; };
 		D0C1637921BAF44B005F3CD0 /* DelegateSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateSerializerTests.swift; sourceTree = "<group>"; };
 		D0C1637B21BAF461005F3CD0 /* SecondSignatureSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignatureSerializerTests.swift; sourceTree = "<group>"; };
 		D0C1637D21BAF611005F3CD0 /* TransferSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSerializerTests.swift; sourceTree = "<group>"; };
 		D0C1637F21BAF622005F3CD0 /* MultiSignatureSerializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSignatureSerializerTests.swift; sourceTree = "<group>"; };
 		D0C163F521D170AF005F3CD0 /* SlotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotTests.swift; sourceTree = "<group>"; };
-		D0D41C662157CB4F000FF047 /* ArkTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkTransaction.swift; sourceTree = "<group>"; };
+		D0D41C662157CB4F000FF047 /* PhantomTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhantomTransaction.swift; sourceTree = "<group>"; };
 		D0D41C6821581F20000FF047 /* HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpersTests.swift; sourceTree = "<group>"; };
-		D0DC21D0217A50BF00C40276 /* ArkSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkSerializer.swift; sourceTree = "<group>"; };
+		D0DC21D0217A50BF00C40276 /* PhantomSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhantomSerializer.swift; sourceTree = "<group>"; };
 		D0DC21D3217A84DF00C40276 /* identity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = identity.json; sourceTree = "<group>"; };
 		D0DC21D4217A84DF00C40276 /* message.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = message.json; sourceTree = "<group>"; };
 		D0DC21D7217A84DF00C40276 /* del_reg_passphrase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = del_reg_passphrase.json; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		D0DC21EB217A84DF00C40276 /* transfer_second-passphrase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transfer_second-passphrase.json"; sourceTree = "<group>"; };
 		D0DC21ED217A84DF00C40276 /* vote_passphrase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vote_passphrase.json; sourceTree = "<group>"; };
 		D0DC21EE217A84DF00C40276 /* vote_second-passphrase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "vote_second-passphrase.json"; sourceTree = "<group>"; };
-		D0DC2201217A866700C40276 /* ArkDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkDeserializer.swift; sourceTree = "<group>"; };
+		D0DC2201217A866700C40276 /* PhantomDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhantomDeserializer.swift; sourceTree = "<group>"; };
 		D0DC2205217BA97500C40276 /* VoteDeserializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteDeserializerTests.swift; sourceTree = "<group>"; };
 		D0DF5F32217E680600E2CC13 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		D0FA889D21557764008F715C /* PrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyTests.swift; sourceTree = "<group>"; };
@@ -317,10 +317,10 @@
 		D0D41C652157CB32000FF047 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				D0D41C662157CB4F000FF047 /* ArkTransaction.swift */,
-				D0DC21D0217A50BF00C40276 /* ArkSerializer.swift */,
-				D0DC2201217A866700C40276 /* ArkDeserializer.swift */,
-				D0C1637421BAAEFD005F3CD0 /* ArkBuilder.swift */,
+				D0D41C662157CB4F000FF047 /* PhantomTransaction.swift */,
+				D0DC21D0217A50BF00C40276 /* PhantomSerializer.swift */,
+				D0DC2201217A866700C40276 /* PhantomDeserializer.swift */,
+				D0C1637421BAAEFD005F3CD0 /* PhantomBuilder.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -435,7 +435,7 @@
 			children = (
 				D0C1637621BACAFF005F3CD0 /* Serializers */,
 				D0DC2204217BA95A00C40276 /* Deserializers */,
-				D0B7298E21D900B8001420AE /* ArkBuilderTests.swift */,
+				D0B7298E21D900B8001420AE /* PhantomBuilderTests.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -535,7 +535,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = Ark;
+				ORGANIZATIONNAME = Phantom;
 				TargetAttributes = {
 					D0B1A6AF21556140001FA4DE = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -673,15 +673,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C1637521BAAEFD005F3CD0 /* ArkBuilder.swift in Sources */,
-				D0DC2202217A866700C40276 /* ArkDeserializer.swift in Sources */,
+				D0C1637521BAAEFD005F3CD0 /* PhantomBuilder.swift in Sources */,
+				D0DC2202217A866700C40276 /* PhantomDeserializer.swift in Sources */,
 				D0FA88A021558C91008F715C /* PublicKey.swift in Sources */,
 				D0B1A6F4215561B8001FA4DE /* Mainnet.swift in Sources */,
 				D0B1A6F2215561B8001FA4DE /* Enums.swift in Sources */,
-				D0D41C672157CB4F000FF047 /* ArkTransaction.swift in Sources */,
+				D0D41C672157CB4F000FF047 /* PhantomTransaction.swift in Sources */,
 				D0B1A6F3215561B8001FA4DE /* Devnet.swift in Sources */,
 				D0B1A6F5215561B8001FA4DE /* ProtocolNetwork.swift in Sources */,
-				D0DC21D1217A50BF00C40276 /* ArkSerializer.swift in Sources */,
+				D0DC21D1217A50BF00C40276 /* PhantomSerializer.swift in Sources */,
 				D0B1A6F0215561B8001FA4DE /* Slot.swift in Sources */,
 				D0FA88A82155A95F008F715C /* Address.swift in Sources */,
 				D0B1A70121557399001FA4DE /* PrivateKey.swift in Sources */,
@@ -702,7 +702,7 @@
 				D0FA88AC2155B525008F715C /* AddressTests.swift in Sources */,
 				D0DC2206217BA97500C40276 /* VoteDeserializerTests.swift in Sources */,
 				D0B1A6BF21556141001FA4DE /* CryptoTests.swift in Sources */,
-				D0B7298F21D900B8001420AE /* ArkBuilderTests.swift in Sources */,
+				D0B7298F21D900B8001420AE /* PhantomBuilderTests.swift in Sources */,
 				D0C1637A21BAF44B005F3CD0 /* DelegateSerializerTests.swift in Sources */,
 				D04BE8782186485A005ADD15 /* DelegateDeserializerTests.swift in Sources */,
 				D04BE87A218654E5005ADD15 /* SecondSignatureDeserializerTests.swift in Sources */,
@@ -871,7 +871,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.ark.Crypto;
+				PRODUCT_BUNDLE_IDENTIFIER = io.phantom.Crypto;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -896,7 +896,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.ark.Crypto;
+				PRODUCT_BUNDLE_IDENTIFIER = io.phantom.Crypto;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -917,7 +917,7 @@
 					"@loader_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.ark.CryptoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.phantom.CryptoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -937,7 +937,7 @@
 					"@loader_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.ark.CryptoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.phantom.CryptoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

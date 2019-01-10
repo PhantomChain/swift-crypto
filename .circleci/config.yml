@@ -13,7 +13,7 @@ jobs:
   build-and-test:
     macos:
       xcode: "10.1.0"
-    working_directory: ~/arkecosystem/crypto
+    working_directory: ~/phantomchain/crypto
     steps:
       - checkout
       - run:

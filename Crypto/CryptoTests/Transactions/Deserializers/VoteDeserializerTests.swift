@@ -1,7 +1,7 @@
 // 
-// This file is part of Ark Swift Crypto.
+// This file is part of PHANTOM Swift Crypto.
 //
-// (c) Ark Ecosystem <info@ark.io>
+// (c) PhantomChain <info@phantom.org>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
@@ -18,7 +18,7 @@ class VoteDeserializerTests: XCTestCase {
         let json = readJson(file: "vote_passphrase", type: type(of: self))
         let serialized = json["serialized"] as! String
         let data = json["data"] as! [String: Any]
-        let transaction = ArkDeserializer.deserialize(serialized: serialized)
+        let transaction = PhantomDeserializer.deserialize(serialized: serialized)
 
         XCTAssertEqual(transaction.version, 1)
         XCTAssertEqual(transaction.network, 30)
@@ -39,7 +39,7 @@ class VoteDeserializerTests: XCTestCase {
         let json = readJson(file: "vote_second-passphrase", type: type(of: self))
         let serialized = json["serialized"] as! String
         let data = json["data"] as! [String: Any]
-        let transaction = ArkDeserializer.deserialize(serialized: serialized)
+        let transaction = PhantomDeserializer.deserialize(serialized: serialized)
 
         XCTAssertEqual(transaction.version, 1)
         XCTAssertEqual(transaction.network, 30)
